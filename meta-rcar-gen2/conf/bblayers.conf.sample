@@ -12,8 +12,10 @@ BBLAYERS ?= " \
   ##OEROOT##/../meta-agl/meta-ivi-common \
   ##OEROOT##/../meta-agl/meta-agl \
   ##OEROOT##/../meta-openembedded/meta-oe \
+  ##OEROOT##/../meta-openembedded/meta-multimedia \
   ##OEROOT##/../meta-renesas \
   ##OEROOT##/../meta-renesas/meta-rcar-gen2 \
+  ##OEROOT##/../meta-agl-demo \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
   ##OEROOT##/meta \
