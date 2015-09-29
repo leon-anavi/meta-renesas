@@ -45,6 +45,7 @@ SRC_URI_append_porter = " \
 	file://0005-ARM-shmobile-porter-Sound-DMA-support-via-SRC-on-DTS.patch \
 	file://0006-ARM-shmobile-porter-Sound-DMA-support-via-DVC-on-DTS.patch \
 	file://0007-ARM-shmobile-porter-Fix-audio-clk-master-to-SSI-and-.patch \
+	file://0008-drm-rcar-du-r8a7791-disable-interlace-mode.patch \
 "
 
 SRC_URI_append_silk = " \
