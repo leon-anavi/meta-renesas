@@ -68,6 +68,7 @@ SRC_URI_append_silk = " \
 	file://0018-porter-can-support.patch \
 	file://0019-i2c-busses-rcar-Workaround-arbitration-loss-error.patch \
 	file://0020-Silk-Remove-I2C1-clock-from-clk_enables.patch \
+	file://0021-drm-rcar-du-r8a7794-disable-interlace-mode.patch \
 "
 
 S = "${WORKDIR}/git"
