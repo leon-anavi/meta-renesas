@@ -13,9 +13,11 @@ BBLAYERS ?= " \
   ##OEROOT##/../meta-agl/meta-agl \
   ##OEROOT##/../meta-openembedded/meta-oe \
   ##OEROOT##/../meta-openembedded/meta-multimedia \
+  ##OEROOT##/../meta-openembedded/meta-ruby \
   ##OEROOT##/../meta-renesas \
   ##OEROOT##/../meta-renesas/meta-rcar-gen2 \
   ##OEROOT##/../meta-agl-demo \
+  ##OEROOT##/../meta-qt5 \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
   ##OEROOT##/meta \
