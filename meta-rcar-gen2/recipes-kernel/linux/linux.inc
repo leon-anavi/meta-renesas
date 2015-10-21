@@ -112,6 +112,9 @@ do_configure_prepend() {
         # needed for ttySC6 login on koelsch with systemd
         kernel_configure_variable FHANDLE y
 
+        # needed for USB touchscreens
+        kernel_configure_variable HID_MULTITOUCH y
+
         # additional configs needed for Genivi compliance
         kernel_configure_variable EXPERIMENTAL y
         kernel_configure_variable ECRYPT_FS y
