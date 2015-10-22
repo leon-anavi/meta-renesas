@@ -48,6 +48,19 @@ MACHINE = "porter"
 #    alsa-utils alsa-tools \
 #"
 
+# For Bluetooth hardware support
+BT_KERNEL_MODULES = " \
+    kernel-module-btusb \
+    kernel-module-bnep \
+    kernel-module-rfcomm \
+    kernel-module-rfkill \
+    "
+
+# Distribution-specific runtime components
+IMAGE_INSTALL_append = " \
+    ${@bb.utils.contains("DISTRO_FEATURES", "bluetooth", "${BT_KERNEL_MODULES}", "", d)} \
+    "
+
 # TODO: When booting weston, someone try to load 'libgbm_kms.so' then
 # fail to boot. It should be 'libgbm_kms.so.1'.
 # Tentatively, it is to install 'libgbm-dev' pkg.

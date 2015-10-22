@@ -59,6 +59,11 @@ do_configure_prepend() {
 	kernel_configure_variable LOCALVERSION "\"\""
 	kernel_configure_variable LOCALVERSION_AUTO n
 
+	# Distribution-dependent kernel features
+	case "${DISTRO_FEATURES}" in
+		*bluetooth*) do_configure_bluetooth
+	esac
+
 	# Udev quirks
 	# Newer versions of udev mandate that sysfs doesn't have deprecated entries
 	if [ "${UDEV_GE_141}" = "1" ] ; then
@@ -127,6 +132,18 @@ do_configure_prepend() {
 	sed -e "${CONF_SED_SCRIPT}" < '${WORKDIR}/defconfig' >> '${S}/.config'
 
 	yes '' | oe_runmake oldconfig
+}
+
+do_configure_bluetooth() {
+    # Needed for Bluetooth hardware support
+    kernel_configure_variable BT_HIDP y
+    kernel_configure_variable BT_HCIBTUSB m
+    kernel_configure_variable BT_BNEP m
+    kernel_configure_variable BT_BNEP_MC_FILTER y
+    kernel_configure_variable BT_BNEP_PROTO_FILTER y
+    kernel_configure_variable BT_RFCOMM m
+    kernel_configure_variable BT_RFCOMM_TTY y
+    kernel_configure_variable RFKILL m
 }
 
 do_configure_append_porter() {
