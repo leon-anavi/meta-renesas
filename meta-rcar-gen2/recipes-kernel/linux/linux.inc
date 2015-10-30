@@ -130,6 +130,10 @@ do_configure_prepend() {
         kernel_configure_variable INPUT_MISC y
         kernel_configure_variable INPUT_UINPUT y
 
+	# psplash only
+	kernel_configure_variable FRAMEBUFFER_CONSOLE n
+	kernel_configure_variable LOGO n
+
 	# Keep this the last line
 	# Remove all modified configs and add the rest to .config
 	sed -e "${CONF_SED_SCRIPT}" < '${WORKDIR}/defconfig' >> '${S}/.config'
