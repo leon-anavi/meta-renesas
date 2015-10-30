@@ -134,6 +134,11 @@ do_configure_prepend() {
 	kernel_configure_variable FRAMEBUFFER_CONSOLE n
 	kernel_configure_variable LOGO n
 
+	# systemd requires following
+	kernel_configure_variable AUTOFS4_FS y
+	kernel_configure_variable IPV6 y
+	kernel_configure_variable SCHEDSTATS y
+
 	# Keep this the last line
 	# Remove all modified configs and add the rest to .config
 	sed -e "${CONF_SED_SCRIPT}" < '${WORKDIR}/defconfig' >> '${S}/.config'
