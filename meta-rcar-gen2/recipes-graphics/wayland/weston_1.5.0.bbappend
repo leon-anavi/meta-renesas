@@ -18,6 +18,7 @@ SRC_URI_rcar-gen2 = "git://github.com/renesas-devel/weston.git;protocol=git;bran
 	file://disable-wayland-scanner-pkg-check.patch \
 	file://make-lcms-explicitly-configurable.patch \
 	file://make-libwebp-explicitly-configurable.patch \
+	file://weston-workaround-to-avoid-segfault-on-hotplug-event.patch \
 "
 S = "${WORKDIR}/git"
 

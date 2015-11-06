@@ -1,0 +1,81 @@
+From be437c6b27a2c6b83b2e60e30e5f0cdcbda28ad0 Mon Sep 17 00:00:00 2001
+From: Yannick Gicquel <yannick.gicquel@iot.bzh>
+Date: Fri, 6 Nov 2015 09:01:43 +0100
+Subject: [PATCH] weston: workaround to avoid segfault on hotplug event
+
+When user unplug/replug a monitor, HDMI link for example,
+weston segfault while calling gbm_surface_destroy from
+drm_output_destroy function.
+
+This workaround basically disable the output destroy
+mechanism on unplug/replug event callbacks. It also force
+the compositor to do a pageflip in order to refresh the
+output when it is connected back.
+
+All this workaround is under "KEEP_OUTPUTS_ON_HOTPLUG"
+compilation flag, which can be disable if required.
+
+Signed-off-by: Yannick Gicquel <yannick.gicquel@iot.bzh>
+Signed-off-by: Manuel Bachmann <mbc@iot.bzh>
+---
+ src/compositor-drm.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/src/compositor-drm.c b/src/compositor-drm.c
+index 2087c93..21b7776 100644
+--- a/src/compositor-drm.c
++++ b/src/compositor-drm.c
+@@ -56,6 +56,12 @@
+ #define DRM_CAP_TIMESTAMP_MONOTONIC 0x6
+ #endif
+ 
++/* This allow weston to keep outputs when re-attached after
++ * a previous unplug event. Comment line below to fallback
++ * to initial behavior.
++ */
++#define KEEP_OUTPUTS_ON_HOTPLUG
++
+ static int option_current_mode = 0;
+ 
+ enum output_config {
+@@ -2383,6 +2389,11 @@ create_outputs(struct drm_compositor *ec, uint32_t option_connector,
+ 	return 0;
+ }
+ 
++#if defined(KEEP_OUTPUTS_ON_HOTPLUG)
++static void
++drm_compositor_set_modes(struct drm_compositor *compositor);
++#endif
++
+ static void
+ update_outputs(struct drm_compositor *ec, struct udev_device *drm_device)
+ {
+@@ -2443,14 +2454,25 @@ update_outputs(struct drm_compositor *ec, struct udev_device *drm_device)
+ 				disconnects &= ~(1 << output->connector_id);
+ 				weston_log("connector %d disconnected\n",
+ 				       output->connector_id);
++#if !defined(KEEP_OUTPUTS_ON_HOTPLUG)
+ 				drm_output_destroy(&output->base);
++#endif
+ 			}
+ 		}
+ 	}
+ 
++#if defined(KEEP_OUTPUTS_ON_HOTPLUG)
++	/* This refresh the display when connector is plugged back */
++	wl_list_for_each_safe(output, next, &ec->base.output_list,
++			      base.link) {
++		/* FIXME: following is required only on 'connected' event. */
++		drm_compositor_set_modes(ec);
++	}
++#else
+ 	/* FIXME: handle zero outputs, without terminating */	
+ 	if (ec->connector_allocator == 0)
+ 		wl_display_terminate(ec->base.wl_display);
++#endif
+ }
+ 
+ static int
+-- 
+1.9.1
+
