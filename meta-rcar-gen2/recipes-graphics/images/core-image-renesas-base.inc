@@ -2,7 +2,7 @@ require ../../include/multimedia-control.inc
 require ../../include/gles-control.inc
 # common
 IMAGE_INSTALL_append_rcar-gen2 = " \
-   alsa-utils alsa-tools \
+   alsa-utils alsa-utils-config alsa-tools \
    libdrm-tests \
    libdrm-kms \
    bash \

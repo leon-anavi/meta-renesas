@@ -48,7 +48,7 @@ PACKAGECONFIG_remove_pn-qtquick1 = "webkit"
 #IMAGE_INSTALL_append_porter = " \
 #    packagegroup-rcar-gen2-multimedia \
 #    packagegroup-lcb-oss-codecs \
-#    alsa-utils alsa-tools \
+#    alsa-utils alsa-utils-config alsa-tools \
 #"
 
 # For Bluetooth hardware support
