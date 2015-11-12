@@ -1,6 +1,9 @@
 DISTRO = "poky-agl"
 MACHINE = "porter"
 
+# Commnet out below if want to use QtWebkit
+PACKAGECONFIG_remove_pn-qtquick1 = "webkit"
+
 # For running GStreamer on wayland (experimental).
 #
 # Uncoment below if want to use multimedia acceleration on wayland
