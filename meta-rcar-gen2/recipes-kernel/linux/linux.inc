@@ -15,6 +15,9 @@ UDEV_GE_141 ?= "1"
 # Enable cgroups support for systemd
 KERNEL_ENABLE_CGROUPS ?= "1"
 
+# combine oe-core way with angstrom DISTRO_TYPE
+DISTRO_TYPE ?= "${@base_contains("IMAGE_FEATURES", "debug-tweaks", "debug", "release",d)}"
+
 # Set the verbosity of kernel messages during runtime
 # You can define CMDLINE_DEBUG in your local.conf or distro.conf to override this behaviour
 CMDLINE_DEBUG ?= '${@base_conditional("DISTRO_TYPE", "release", "quiet", "debug", d)}'
@@ -138,6 +141,17 @@ do_configure_prepend() {
 	kernel_configure_variable AUTOFS4_FS y
 	kernel_configure_variable IPV6 y
 	kernel_configure_variable SCHEDSTATS y
+
+	# AGL spec. mentioned following
+	kernel_configure_variable EXT4_FS y
+	kernel_configure_variable FANOTIFY y
+	kernel_configure_variable POSIX_MQUEUE y
+	kernel_configure_variable TUN y
+
+	# only when distro is built for debug
+	if [ "${DISTRO_TYPE}" = "debug" ]; then
+		kernel_configure_variable BLK_DEV_LOOP y
+	fi
 
 	# Keep this the last line
 	# Remove all modified configs and add the rest to .config
