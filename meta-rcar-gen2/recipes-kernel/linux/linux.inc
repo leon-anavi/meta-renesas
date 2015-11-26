@@ -148,6 +148,14 @@ do_configure_prepend() {
 	kernel_configure_variable POSIX_MQUEUE y
 	kernel_configure_variable TUN y
 
+	# For containers support (AGL spec v1.0, section 7.3.1)
+	kernel_configure_variable NAMESPACES y
+	kernel_configure_variable UTS_NS n
+	kernel_configure_variable IPC_NS y
+	kernel_configure_variable USER_NS y
+	kernel_configure_variable PID_NS y
+	kernel_configure_variable NET_NS y
+
 	# only when distro is built for debug
 	if [ "${DISTRO_TYPE}" = "debug" ]; then
 		kernel_configure_variable BLK_DEV_LOOP y
