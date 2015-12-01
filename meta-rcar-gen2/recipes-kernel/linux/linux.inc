@@ -116,6 +116,7 @@ do_configure_prepend() {
 
 	# Activate CONFIG_LEGACY_PTYS
 	kernel_configure_variable LEGACY_PTYS y
+	kernel_configure_variable LEGACY_PTY_COUNT 8
 
         # needed for ttySC6 login on koelsch with systemd
         kernel_configure_variable FHANDLE y
