@@ -32,7 +32,7 @@ function copy_mm_packages() {
                         echo -e "'$DOWNLOAD_DIR' directory."
                         echo -e "  $ZIP_1"
                         echo -e "  $ZIP_2"
-                        return -1
+                        return 1
                 fi
         fi
 
@@ -42,7 +42,7 @@ function copy_mm_packages() {
                 cd ../..
         else
                 echo "scripts to copy GFX drivers for '$1' not found."
-                return -1
+                return 1
         fi
 
         if [ -f meta-renesas/meta-rcar-gen2/$COPY_MM_SCRIPT ]; then
@@ -51,6 +51,6 @@ function copy_mm_packages() {
                 cd ../..
         else
                 echo "scripts to copy MM software for '$1' not found."
-                return -1
+                return 1
         fi
 }

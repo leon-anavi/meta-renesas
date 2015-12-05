@@ -23,7 +23,7 @@ find_change_name(){
 change_names() {
 	if [ ! -e $1 ]; then
 		echo "Directory $1 not existed. Exit !"
-		exit
+		exit 1
 	fi
 	current_path=`pwd`
 	cd $1
