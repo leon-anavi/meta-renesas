@@ -184,7 +184,7 @@ do_configure_bluetooth() {
 do_configure_append_porter() {
     # Enable CAN
     kernel_configure_variable CAN y
-    kernel_configure_variable VCAN y
+    kernel_configure_variable CAN_VCAN y
     kernel_configure_variable CAN_RCAR y
 
     yes '' | oe_runmake oldconfig
