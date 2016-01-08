@@ -1,0 +1,28 @@
+From c219bad8412666983867d5144a4b552acaf5d827 Mon Sep 17 00:00:00 2001
+From: Yannick Gicquel <yannick.gicquel@iot.bzh>
+Date: Wed, 6 Jan 2016 14:04:23 +0100
+Subject: [PATCH] dri2: wayland: fixup gcc5 build
+
+Some standards headers were missing for fstat() syscall.
+
+Signed-off-by: Yannick Gicquel <yannick.gicquel@iot.bzh>
+---
+ src/egl/drivers/dri2/platform_wayland.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/egl/drivers/dri2/platform_wayland.c b/src/egl/drivers/dri2/platform_wayland.c
+index 9914b68..f12a70a 100644
+--- a/src/egl/drivers/dri2/platform_wayland.c
++++ b/src/egl/drivers/dri2/platform_wayland.c
+@@ -36,6 +36,8 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <xf86drm.h>
++#include <sys/types.h>
++#include <sys/stat.h>
+ #include <sys/mman.h>
+ 
+ #include "egl_dri2.h"
+-- 
+1.9.1
+
