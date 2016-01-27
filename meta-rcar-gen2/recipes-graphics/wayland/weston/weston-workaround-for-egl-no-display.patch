@@ -1,0 +1,27 @@
+--- a/src/gl-renderer.c	2016-01-27 08:49:43.328882567 +0000
++++ b/src/gl-renderer.c	2016-01-27 08:56:31.807915324 +0000
+@@ -2127,7 +2127,11 @@
+ {
+ 	const char *extensions;
+ 
++#ifndef EGL_DRIVER_NO_EGL_NO_DISPLAY_SUPPORT
+ 	extensions = eglQueryString(EGL_NO_DISPLAY, EGL_EXTENSIONS);
++#else
++        extensions = NULL;
++#endif
+ 	if (!extensions) {
+ 		weston_log("Retrieving EGL client extension string failed.\n");
+ 		return;
+@@ -2246,8 +2250,12 @@
+ 	char s[64];
+ 
+ 	if (!extensions) {
++#ifndef EGL_DRIVER_NO_EGL_NO_DISPLAY_SUPPORT
+ 		extensions = (const char *) eglQueryString(
+ 			EGL_NO_DISPLAY, EGL_EXTENSIONS);
++#else
++                extensions = NULL;
++#endif
+ 
+ 		if (!extensions)
+ 			return 0;
