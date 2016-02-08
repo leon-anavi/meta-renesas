@@ -54,6 +54,9 @@ do_install() {
     cp -r ${S}/etc ${D}
     cp -r ${S}/usr ${D}
 
+    # Create a symbolic link for compatibility with various software
+    ln -s ${D}/usr/lib/libGLESv2.so ${D}/usr/lib/libGLESv2.so.2
+
     if [ "${USE_WAYLAND}" = "1" ]; then
         # Rename libEGL.so
         mv ${D}/usr/lib/libEGL.so ${D}/usr/lib/libEGL-pvr.so
