@@ -67,7 +67,8 @@ IMAGE_INSTALL_append = " \
 # TODO: When booting weston, someone try to load 'libgbm_kms.so' then
 # fail to boot. It should be 'libgbm_kms.so.1'.
 # Tentatively, it is to install 'libgbm-dev' pkg.
-IMAGE_INSTALL_append = "libgbm-dev"
+#IMAGE_INSTALL_append = "libgbm-dev"
+# this is not recommended and should be done in the recipe requiring this module (gles-user-module)
 
 LICENSE_FLAGS_WHITELIST = "commercial"
 
