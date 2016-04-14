@@ -1,5 +1,5 @@
 require linux.inc
-require linux-dtb.inc
+require recipes-kernel/linux/linux-dtb.inc
 require linux-dtb-append.inc
 
 DESCRIPTION = "Linux kernel for the R-Car Generation 2 based board"
