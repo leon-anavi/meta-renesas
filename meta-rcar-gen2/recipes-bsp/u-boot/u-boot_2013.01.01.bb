@@ -1,4 +1,4 @@
-require u-boot.inc
+require recipes-bsp/u-boot/u-boot.inc
 
 # This is needs to be validated among supported BSP's before we can
 # make it default
