@@ -36,3 +36,17 @@ SRC_URI_append_silk = " \
 	file://0005-uboot-serial-sh-SCIF-internal-clock-support.patch \
 	file://0006-uboot-Silk-disable-dcache-until-fixed.patch \
 "
+
+# MiniMonitor requires u-boot.srec
+UBOOT_SREC ?= "u-boot.srec"
+UBOOT_SREC_SYMLINK ?= "u-boot-${MACHINE}.srec"
+UBOOT_SREC_IMAGE ?= "u-boot-${MACHINE}-${PV}-${PR}.srec"
+
+do_deploy_append() {
+	install ${S}/${UBOOT_SREC} ${DEPLOYDIR}/${UBOOT_SREC_IMAGE}
+
+	cd ${DEPLOYDIR}
+	rm -f ${UBOOT_SREC} ${UBOOT_SREC_SYMLINK}
+	ln -sf ${UBOOT_SREC_IMAGE} ${UBOOT_SREC}
+	ln -sf ${UBOOT_SREC_IMAGE} ${UBOOT_SREC_SYMLINK}
+}
