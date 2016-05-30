@@ -157,6 +157,19 @@ do_configure_prepend() {
 	kernel_configure_variable PID_NS y
 	kernel_configure_variable NET_NS y
 
+	# nbdroot support
+	kernel_configure_variable BLK_DEV_LOOP y
+	kernel_configure_variable BLK_DEV_NBD y
+	kernel_configure_variable BLK_DEV_INITRD y
+	kernel_configure_variable RD_GZIP y
+	kernel_configure_variable RD_BZIP2 y
+	kernel_configure_variable RD_XZ y
+	kernel_configure_variable EXT4_FS y
+	kernel_configure_variable EXT4_USE_FOR_EXT23 y
+	kernel_configure_variable BLK_DEV_RAM y
+	kernel_configure_variable BLK_DEV_RAM_COUNT 2
+	kernel_configure_variable BLK_DEV_RAM_SIZE 16384
+
 	# only when distro is built for debug
 	if [ "${DISTRO_TYPE}" = "debug" ]; then
 		kernel_configure_variable BLK_DEV_LOOP y
