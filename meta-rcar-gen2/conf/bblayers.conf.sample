@@ -11,6 +11,7 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-yocto-bsp \
   ##OEROOT##/../meta-agl/meta-ivi-common \
   ##OEROOT##/../meta-agl/meta-agl \
+  ##OEROOT##/../meta-agl/meta-netboot \
   ##OEROOT##/../meta-openembedded/meta-oe \
   ##OEROOT##/../meta-openembedded/meta-multimedia \
   ##OEROOT##/../meta-openembedded/meta-ruby \
