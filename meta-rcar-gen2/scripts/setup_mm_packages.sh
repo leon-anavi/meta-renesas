@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MM_PKG_REVISION="20151130"
+MM_PKG_REVISION="20151228"
 
 MM_PKG_NAME="R-Car_Series_Evaluation_Software_Package"
 MM_PKG_USERLAND="for_Linux"
