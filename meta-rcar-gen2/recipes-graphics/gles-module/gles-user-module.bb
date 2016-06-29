@@ -55,7 +55,7 @@ do_install() {
     cp -r ${S}/usr ${D}
 
     # Create a symbolic link for compatibility with various software
-    ln -s ${D}/usr/lib/libGLESv2.so ${D}/usr/lib/libGLESv2.so.2
+    ln -s libGLESv2.so ${D}/usr/lib/libGLESv2.so.2
 
     if [ "${USE_WAYLAND}" = "1" ]; then
         # Rename libEGL.so
