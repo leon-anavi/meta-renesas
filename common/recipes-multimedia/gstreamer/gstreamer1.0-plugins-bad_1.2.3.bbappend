@@ -1,7 +1,5 @@
 DEPENDS += "faad2 libxml2 libuiomux libshvio"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
 TARGET_CFLAGS += "-D_GNU_SOURCE"
 
 PACKAGECONFIG := "${@'${PACKAGECONFIG}'.replace('curl', '')}"
