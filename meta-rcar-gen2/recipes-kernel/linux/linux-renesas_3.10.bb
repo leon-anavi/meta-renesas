@@ -10,8 +10,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 PV_append = "+git${SRCREV}"
 
 RENESAS_BACKPORTS_URL="git://git.kernel.org/pub/scm/linux/kernel/git/horms/renesas-backport.git"
-SRCREV = "b8ca8c397343f4233f9f68fc3a5bf8e1c9b88251"
-SRC_URI = "${RENESAS_BACKPORTS_URL};protocol=git;branch=bsp/v3.10.31-ltsi/rcar-gen2-1.9.2 \
+SRCREV = "165e12ce2d7839e755debbec78dfa43b54345275"
+SRC_URI = "${RENESAS_BACKPORTS_URL};protocol=git;branch=bsp/v3.10.31-ltsi/rcar-gen2-1.9.7 \
 	file://0001-kernel-add-support-for-gcc-5.patch \
 	file://0001-arm-lager-Add-vmalloc-384M-to-bootargs-of-DTS.patch \
 	file://0001-arm-koelsch-Add-vmalloc-384M-to-bootargs-of-DTS.patch \
@@ -21,12 +21,14 @@ SRC_URI = "${RENESAS_BACKPORTS_URL};protocol=git;branch=bsp/v3.10.31-ltsi/rcar-g
 
 SRC_URI_append_porter = " \
 	file://0001-kernel-Silk-board-support.patch \
+	file://0002-silk-reference-Add-DRM_RCAR_DU_CONNECT_VSP-configura.patch \
 	file://0002-kernel-silk-fix-ethernet-phy-irq.patch \
 	file://0003-kernel-silk-fix-sd-detect.patch \
 	file://0004-kernel-Revert-i2c-rcar-Support-ACK-by-HW-auto-restart-after-NACK.patch \
 	file://0006-Rcar-DU-add-RGB-connector.patch \
 	file://0007-SILK-add-i2c0.patch \
 	file://0008-Porter-board-support.patch \
+	file://0009-porter-reference-Add-DRM_RCAR_DU_CONNECT_VSP-configu.patch \
 	file://0009-shmobile-add-atag-dtb-compat.patch \
 	file://0010-Silk-Add-missing-pins-handle-to-Eth.patch \
 	file://0011-Silk-Add-missing-DU-pins.patch \
@@ -52,12 +54,14 @@ SRC_URI_append_porter = " \
 
 SRC_URI_append_silk = " \
 	file://0001-kernel-Silk-board-support.patch \
+	file://0002-silk-reference-Add-DRM_RCAR_DU_CONNECT_VSP-configura.patch \
 	file://0002-kernel-silk-fix-ethernet-phy-irq.patch \
 	file://0003-kernel-silk-fix-sd-detect.patch \
 	file://0004-kernel-Revert-i2c-rcar-Support-ACK-by-HW-auto-restart-after-NACK.patch \
 	file://0006-Rcar-DU-add-RGB-connector.patch \
 	file://0007-SILK-add-i2c0.patch \
 	file://0008-Porter-board-support.patch \
+	file://0009-porter-reference-Add-DRM_RCAR_DU_CONNECT_VSP-configu.patch \
 	file://0009-shmobile-add-atag-dtb-compat.patch \
 	file://0010-Silk-Add-missing-pins-handle-to-Eth.patch \
 	file://0011-Silk-Add-missing-DU-pins.patch \
