@@ -175,6 +175,28 @@ do_configure_prepend() {
 		kernel_configure_variable BLK_DEV_LOOP y
 	fi
 
+	if [ "x1" = "x${@base_contains("DISTRO_FEATURES", "usbgadget", "1", "",d)}" ]; then
+		# activate USB-OTG & Gadget
+		kernel_configure_variable USB_OTG y
+		kernel_configure_variable USB_RENESAS_USBHS_UDC y
+		kernel_configure_variable CONFIGFS_FS y
+		kernel_configure_variable USB_GADGET y
+		kernel_configure_variable USB_LIBCOMPOSITE y
+		kernel_configure_variable USB_F_ACM y
+		kernel_configure_variable USB_U_SERIAL y
+		kernel_configure_variable USB_ETH m
+		kernel_configure_variable USB_G_MULTI m
+		kernel_configure_variable USB_G_MULTI_RNDIS n
+		kernel_configure_variable USB_G_MULTI_CDC y
+
+		# ethernet over usb tethering
+		kernel_configure_variable NETFILTER y
+		kernel_configure_variable NF_CONNTRACK_IPV4 y
+		kernel_configure_variable NF_NAT_IPV4 y
+		kernel_configure_variable BRIDGE y
+		kernel_configure_variable IP_NF_TARGET_MASQUERADE y
+	fi
+
 	# Keep this the last line
 	# Remove all modified configs and add the rest to .config
 	sed -e "${CONF_SED_SCRIPT}" < '${WORKDIR}/defconfig' >> '${B}/.config'
