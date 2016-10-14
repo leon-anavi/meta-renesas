@@ -22,6 +22,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI_append = " \
 	file://0001-fixup-build-with-gcc5.patch \
 	file://0001-inline-use-the-gcc-inline-version-instead-of-the-c99.patch \
+	file://0001-fixup-build-with-gcc6.patch \
 "
 
 SRC_URI_append_porter = " \
@@ -43,7 +44,7 @@ UBOOT_SREC_SYMLINK ?= "u-boot-${MACHINE}.srec"
 UBOOT_SREC_IMAGE ?= "u-boot-${MACHINE}-${PV}-${PR}.srec"
 
 do_deploy_append() {
-	install ${S}/${UBOOT_SREC} ${DEPLOYDIR}/${UBOOT_SREC_IMAGE}
+	install ${WORKDIR}/build/${UBOOT_SREC} ${DEPLOYDIR}/${UBOOT_SREC_IMAGE}
 
 	cd ${DEPLOYDIR}
 	rm -f ${UBOOT_SREC} ${UBOOT_SREC_SYMLINK}
