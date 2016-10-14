@@ -12,5 +12,6 @@ SRCREV = "165e12ce2d7839e755debbec78dfa43b54345275"
 SRC_URI = "${RENESAS_BACKPORTS_URL};protocol=git;branch=bsp/v3.10.31-ltsi/rcar-gen2-1.9.7 \
           file://scripts-Makefile.headersinst-install-headers-from-sc.patch \
           file://0001-kernel-add-support-for-gcc-5.patch \
+          file://0001-kernel-add-support-for-gcc-6.patch \
 "
 S = "${WORKDIR}/git"

@@ -9,10 +9,13 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 PV_append = "+git${SRCREV}"
 
+PKGE = "1"
+
 RENESAS_BACKPORTS_URL="git://git.kernel.org/pub/scm/linux/kernel/git/horms/renesas-backport.git"
 SRCREV = "165e12ce2d7839e755debbec78dfa43b54345275"
 SRC_URI = "${RENESAS_BACKPORTS_URL};protocol=git;branch=bsp/v3.10.31-ltsi/rcar-gen2-1.9.7 \
 	file://0001-kernel-add-support-for-gcc-5.patch \
+	file://0001-kernel-add-support-for-gcc-6.patch \
 	file://0001-arm-lager-Add-vmalloc-384M-to-bootargs-of-DTS.patch \
 	file://0001-arm-koelsch-Add-vmalloc-384M-to-bootargs-of-DTS.patch \
 	file://0001-arm-alt-Add-vmalloc-384M-to-bootargs-of-DTS.patch \
