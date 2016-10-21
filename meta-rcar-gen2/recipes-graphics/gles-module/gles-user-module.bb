@@ -46,6 +46,13 @@ SRC_URI_append_r8a7794 = " ${@base_contains("DISTRO_FEATURES", "wayland", " \
         file://EGL_headers_for_wayland.patch \
         ", "", d)}"
 
+SRC_URI_append = " file://rc.pvr.service "
+
+inherit systemd
+
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICE_${PN} = "rc.pvr.service"
+
 do_populate_lic[noexec] = "1"
 do_compile[noexec] = "1"
 
@@ -53,7 +60,8 @@ do_install() {
     # Copy binary into sysroot
     cp -r ${S}/etc ${D}
     cp -r ${S}/usr ${D}
-
+    mv ${D}/etc/init.d/rc.pvr ${D}/usr/local/bin/
+    
     # Create a symbolic link for compatibility with various software
     ln -s libGLESv2.so ${D}/usr/lib/libGLESv2.so.2
 
@@ -69,6 +77,10 @@ do_install() {
            sed -i -e "s/WindowSystem=libpvrPVR2D_FLIPWSEGL.so/WindowSystem=libpvrPVR2D_WAYLANDWSEGL.so/g" \
            ${D}/${sysconfdir}/powervr.ini
         fi
+    fi
+    # Install systemd unit files
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+        install -m 644 -p -D ${WORKDIR}/rc.pvr.service ${D}${systemd_system_unitdir}/rc.pvr.service
     fi
 } 
 
@@ -87,8 +99,6 @@ FILES_${PN}-dev = " \
     ${includedir}/* \
 "
 
-inherit update-rc.d
-
 PROVIDES = "virtual/libgles2"
 PROVIDES_append = "${@base_contains("DISTRO_FEATURES", "wayland", "", " virtual/egl", d)}"
 RPROVIDES_${PN} += "${GLES}-user-module libgles2-mesa libgles2-mesa-dev libgles2 libgles2-dev"
@@ -96,5 +106,3 @@ INSANE_SKIP_${PN} += "ldflags already-stripped"
 INSANE_SKIP_${PN}-dev += "ldflags"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 PRIVATE_LIBS_${PN} = "libEGL.so.1"
-INITSCRIPT_NAME = "rc.pvr"
-INITSCRIPT_PARAMS = "start 8 5 2 . stop 61 0 1 6 ."
