@@ -4,7 +4,7 @@ SECTION = "libs"
 
 LIC_FILES_CHKSUM = "file://gbm.c;beginline=4;endline=22;md5=5cdaac262c876e98e47771f11c7036b5"
 
-SRCREV = "d5a58c689932d42add1301c5cd323da5244374af"
+SRCREV = "c4ee70a7202dc81eaa45a73535e82cee98db2a0d"
 SRC_URI = "git://github.com/thayama/libgbm;protocol=git;branch=master"
 
 SRC_URI_append = " \
