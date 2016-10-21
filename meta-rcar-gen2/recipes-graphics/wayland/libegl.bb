@@ -6,7 +6,7 @@ COMPATIBLE_MACHINE = "(r8a7790|r8a7791|r8a7793|r8a7794)"
 
 RPROVIDES_${PN} = "${@base_contains("DISTRO_FEATURES", "wayland", "libEGL.so", "", d)}"
 PROVIDES = "${@base_contains("DISTRO_FEATURES", "wayland", "virtual/egl", "", d)}"
-SRCREV = "02b559098042a0aeb9ac63eece547868a140fa46"
+SRCREV = "7b09cce97e8658ba927e71f1af43360c4cc392b7"
 SRC_URI = "git://github.com/thayama/libegl;protocol=git;branch=master \
            file://0001-libegl-Remove-duplicate-header-files-of-gles-user-mo.patch"
 
