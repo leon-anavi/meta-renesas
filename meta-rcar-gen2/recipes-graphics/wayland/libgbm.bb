@@ -7,6 +7,10 @@ LIC_FILES_CHKSUM = "file://gbm.c;beginline=4;endline=22;md5=5cdaac262c876e98e477
 SRCREV = "d5a58c689932d42add1301c5cd323da5244374af"
 SRC_URI = "git://github.com/thayama/libgbm;protocol=git;branch=master"
 
+SRC_URI_append = " \
+	file://0001-Add-gbm_bo_get_fd-function.patch \
+"
+
 S = "${WORKDIR}/git"
 
 COMPATIBLE_MACHINE = "(r8a7790|r8a7791|r8a7793|r8a7794)"
