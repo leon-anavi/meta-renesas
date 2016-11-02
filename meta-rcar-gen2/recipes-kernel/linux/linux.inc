@@ -230,15 +230,6 @@ do_configure_bluetooth() {
     kernel_configure_variable RFKILL m
 }
 
-do_configure_append_porter() {
-    # Enable CAN
-    kernel_configure_variable CAN y
-    kernel_configure_variable CAN_VCAN y
-    kernel_configure_variable CAN_RCAR y
-
-    yes '' | oe_runmake -C ${S} O=${B} oldconfig
-}
-
 do_configure_append_smack() {
     # Enable Smack
     kernel_configure_variable IP_NF_SECURITY m

@@ -142,6 +142,8 @@ SRC_URI_append_smack = " \
 	file://smack/0054-Smack-secmark-connections.patch \
 "
 
+SRC_URI_append_porter = " file://can-rcar.cfg"
+
 S = "${WORKDIR}/git"
 
 KERNEL_DEFCONFIG = "shmobile_defconfig"
