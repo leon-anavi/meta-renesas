@@ -146,6 +146,14 @@ SRC_URI_append_smack = " \
 	file://smack/0054-Smack-secmark-connections.patch \
 "
 
+# smack patches are applied if DISTRO_FEATURES has "smack"
+# smack patches for handling bluetooth
+SRC_URI_append_smack = " \
+	file://smack/0055-Smack-Assign-smack_known_web-as-default-smk_in-label.patch \
+	file://smack/0056-Smack-Assign-smack_known_web-label-for-kernel-thread.patch \
+	file://smack/0057-Smack-handles-socket-in-file_receive.patch \
+"
+
 SRC_URI_append_porter = " file://can-rcar.cfg"
 
 S = "${WORKDIR}/git"
