@@ -230,22 +230,6 @@ do_configure_bluetooth() {
     kernel_configure_variable RFKILL m
 }
 
-do_configure_append_smack() {
-    # Enable Smack
-    kernel_configure_variable IP_NF_SECURITY m
-    kernel_configure_variable IP6_NF_SECURITY m
-    kernel_configure_variable EXT2_FS_SECURITY y
-    kernel_configure_variable EXT3_FS_SECURITY y
-    kernel_configure_variable EXT4_FS_SECURITY y
-    kernel_configure_variable SECURITY y
-    kernel_configure_variable SECURITY_SMACK y
-    kernel_configure_variable TMPFS_XATTR y
-
-    kernel_configure_variable DEFAULT_SECURITY "smack"
-    kernel_configure_variable DEFAULT_SECURITY_SMACK y
-    yes '' | oe_runmake -C ${S} O=${B} oldconfig
-}
-
 # Automatically depend on lzop-native if CONFIG_KERNEL_LZO is enabled
 python () {
     try:
