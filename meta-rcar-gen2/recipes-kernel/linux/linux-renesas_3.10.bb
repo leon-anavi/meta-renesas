@@ -156,6 +156,9 @@ SRC_URI_append_smack = " \
 
 SRC_URI_append_porter = " file://can-rcar.cfg"
 
+# Backport fix for CVE-2016-5195
+SRC_URI_append = " file://9999-Backport-fix-for-CVE-2016-5195.patch "
+
 S = "${WORKDIR}/git"
 
 KERNEL_DEFCONFIG = "shmobile_defconfig"
