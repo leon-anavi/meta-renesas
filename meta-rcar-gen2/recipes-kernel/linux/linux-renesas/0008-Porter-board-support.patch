@@ -1322,7 +1322,7 @@ index 0000000..d481ecd
 +
 +/* POWER IC */
 +static struct i2c_board_info poweric_i2c[] = {
-+	{ I2C_BOARD_INFO("da9063", 0x58), },
++	{ I2C_BOARD_INFO("da9063", 0x5a), },
 +};
 +
 +static void porter_restart(char mode, const char *cmd)

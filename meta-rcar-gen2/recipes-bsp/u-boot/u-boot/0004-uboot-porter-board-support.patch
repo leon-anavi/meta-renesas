@@ -403,9 +403,9 @@ index 0000000..e6ded08
 +	u8 val;
 +
 +	i2c_init(CONFIG_SYS_I2C_SPEED, 0);
-+	i2c_read(0x58, 0x13, 1, &val, 1);
++	i2c_read(0x5a, 0x13, 1, &val, 1);
 +	val |= 0x02;
-+	i2c_write(0x58, 0x13, 1, &val, 1);
++	i2c_write(0x5a, 0x13, 1, &val, 1);
 +}
 +
 +enum {
