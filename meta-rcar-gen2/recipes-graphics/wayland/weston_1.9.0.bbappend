@@ -1,5 +1,5 @@
 EXTRA_OECONF += "--enable-gst-recorder "
-DEPENDS += "media-ctl"
+DEPENDS += "media-ctl gstreamer1.0 gstreamer1.0-plugins-base libjpeg-turbo"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
