@@ -17,6 +17,7 @@ SRC_URI = "${RENESAS_BACKPORTS_URL};protocol=git;branch=bsp/v3.10.31-ltsi/rcar-g
 	file://0001-arm-koelsch-Add-vmalloc-384M-to-bootargs-of-DTS.patch \
 	file://0001-arm-alt-Add-vmalloc-384M-to-bootargs-of-DTS.patch \
 	file://0001-arm-gose-Add-vmalloc-384M-to-bootargs-of-DTS.patch \
+	file://0001-ASoC-ak4642-Replace-mdelay-function-to-msleep.patch \
 "
 
 SRC_URI_append_porter = " \
