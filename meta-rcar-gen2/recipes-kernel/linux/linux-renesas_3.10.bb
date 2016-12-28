@@ -170,3 +170,21 @@ KERNEL_DEFCONFIG = "shmobile_defconfig"
 do_configure_prepend() {
         install -m 0644 ${S}/arch/${ARCH}/configs/${KERNEL_DEFCONFIG} ${WORKDIR}/defconfig || die "No default configuration for ${MACHINE} / ${KERNEL_DEFCONFIG} available."
 }
+
+do_install_append(){
+    # modprobe automatically at boot
+    if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
+        install -d ${D}/${sysconfdir}/modules-load.d
+        touch ${D}/${sysconfdir}/modules-load.d/cluster-demo.conf
+        echo "mmngr"    >>  ${D}/${sysconfdir}/modules-load.d/cluster-demo.conf
+        echo "mmngrbuf" >>  ${D}/${sysconfdir}/modules-load.d/cluster-demo.conf
+        echo "uvcs_cmn" >>  ${D}/${sysconfdir}/modules-load.d/cluster-demo.conf
+        echo "s3ctl"    >>  ${D}/${sysconfdir}/modules-load.d/cluster-demo.conf
+        echo "vspm"     >>  ${D}/${sysconfdir}/modules-load.d/cluster-demo.conf
+        echo "fdpm"     >>  ${D}/${sysconfdir}/modules-load.d/cluster-demo.conf
+    fi
+}
+
+FILES_kernel-modules += " \
+    ${sysconfdir}/modules-load.d/cluster-demo.conf \
+    "
