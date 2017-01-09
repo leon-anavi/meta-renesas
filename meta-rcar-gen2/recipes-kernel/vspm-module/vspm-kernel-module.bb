@@ -1,7 +1,7 @@
 require ../../include/rcar-gen2-modules-common.inc
 
 LICENSE = "GPLv2 & MIT"
-LIC_FILES_CHKSUM = "file://vspm/drv/GPL-COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e \
+LIC_FILES_CHKSUM = "file://vspm/drv/GPL-COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
     file://vspm/drv/MIT-COPYING;md5=fea016ce2bdf2ec10080f69e9381d378 \
 "
 DEPENDS = "linux-renesas"
