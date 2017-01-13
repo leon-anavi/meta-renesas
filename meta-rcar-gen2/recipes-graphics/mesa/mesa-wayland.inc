@@ -2,7 +2,7 @@
 PACKAGECONFIG[gles] = "--enable-gles1 --disable-gles2"
 PACKAGECONFIG[egl] = "--enable-egl --with-egl-platforms=wayland"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/mesa_10.6.3/:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/mesa/:"
 SRC_URI += "file://0001-dri2-Fix-fstat-s_ISHCR-implict-declaration-build-err.patch"
 
 # Disable the gbm modules of mesa
