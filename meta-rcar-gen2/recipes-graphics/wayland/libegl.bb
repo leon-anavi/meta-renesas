@@ -4,8 +4,8 @@ LIC_FILES_CHKSUM = "file://egl.c;beginline=5;endline=15;md5=3677623633a6e459b1f6
 
 COMPATIBLE_MACHINE = "(r8a7790|r8a7791|r8a7793|r8a7794)"
 
-RPROVIDES_${PN} = "${@base_contains("DISTRO_FEATURES", "wayland", "libEGL.so", "", d)}"
-PROVIDES = "${@base_contains("DISTRO_FEATURES", "wayland", "virtual/egl", "", d)}"
+RPROVIDES_${PN} = "${@bb.utils.contains("DISTRO_FEATURES", "wayland", "libEGL.so", "", d)}"
+PROVIDES = "${@bb.utils.contains("DISTRO_FEATURES", "wayland", "virtual/egl", "", d)}"
 SRCREV = "7b09cce97e8658ba927e71f1af43360c4cc392b7"
 SRC_URI = "git://github.com/thayama/libegl;protocol=git;branch=master \
            file://0001-libegl-Remove-duplicate-header-files-of-gles-user-mo.patch"

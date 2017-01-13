@@ -45,7 +45,7 @@ RDEPENDS_packagegroup-rcar-gen2-multimedia = "\
     gstreamer1.0-plugins-bad-faad \
     gstreamer1.0-plugins-bad-mpegtsdemux \
     gstreamer1.0-plugins-bad-debugutilsbad \
-    ${@base_contains("LICENSE_FLAGS_WHITELIST", "commercial", "gstreamer1.0-omx gstreamer1.0-plugins-ugly-asf", "", d )} \
+    ${@bb.utils.contains("LICENSE_FLAGS_WHITELIST", "commercial", "gstreamer1.0-omx gstreamer1.0-plugins-ugly-asf", "", d )} \
     ${@base_conditional("USE_GLES_WAYLAND", "1", "gstreamer1.0-plugins-base-vspfilter", "", d )} \
 "
 

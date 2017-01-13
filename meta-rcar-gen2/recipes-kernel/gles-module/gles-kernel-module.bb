@@ -29,8 +29,8 @@ S_r8a7794 = "${WORKDIR}/eurasia_km"
 KERNEL_SRC_PATH_r8a7794 = "eurasiacon/build/linux2/r8a7794_linux/"
 TARGET_PATH_r8a7794 = "eurasia_km/eurasiacon/binary2_r8a7794_linux_release/target/kbuild"
 
-GLES = "${@base_contains('MACHINE_FEATURES', 'rgx', 'rgx', \
-    base_contains('MACHINE_FEATURES', 'sgx', 'sgx', '', d), d)}"
+GLES = "${@bb.utils.contains('MACHINE_FEATURES', 'rgx', 'rgx', \
+    bb.utils.contains('MACHINE_FEATURES', 'sgx', 'sgx', '', d), d)}"
 
 RPROVIDES_${PN} += "${GLES}-kernel-module"
 RPROVIDES_${PN} += "kernel-module-bc-example kernel-module-pvrsrvkm kernel-module-dc-linuxfb"

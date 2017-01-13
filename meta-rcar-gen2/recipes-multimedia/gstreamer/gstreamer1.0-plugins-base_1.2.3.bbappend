@@ -25,7 +25,7 @@ VSPFILTER_CONFIGS = " \
 "
 
 # For wayland
-PACKAGECONFIG_remove_rcar-gen2 = "${@base_contains("DISTRO_FEATURES", "wayland", "orc", "", d)}"
+PACKAGECONFIG_remove_rcar-gen2 = "${@bb.utils.contains("DISTRO_FEATURES", "wayland", "orc", "", d)}"
 
 SRC_URI_append_rcar-gen2 = \
     "${@'${VSPFILTER_CONFIGS}' \

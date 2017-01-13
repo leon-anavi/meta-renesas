@@ -21,7 +21,7 @@ do_configure_prepend() {
 
 # for wayland
 PACKAGECONFIG_remove_rcar-gen2 = "${@'orc' if '1' in '${USE_GLES_WAYLAND}' else ''}"
-PACKAGECONFIG_append_rcar-gen2 = " faad ${@base_contains('USE_GLES_WAYLAND', '1', 'wayland', '', d)}"
+PACKAGECONFIG_append_rcar-gen2 = " faad ${@bb.utils.contains('USE_GLES_WAYLAND', '1', 'wayland', '', d)}"
 DEPENDS += "wayland-kms"
 RDEPENDS_${PN} = "libwayland-egl"
 

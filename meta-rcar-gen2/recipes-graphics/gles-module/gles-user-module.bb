@@ -26,23 +26,23 @@ OPENGLES3 ?= "0"
 SRC_URI_r8a7790 = '${@base_conditional( "OPENGLES3", "1", \
         "file://r8a7790_linux_rgx_binaries_gles3.tar.bz2", \
         "file://r8a7790_linux_rgx_binaries_gles2.tar.bz2", d )}'
-SRC_URI_append_r8a7790 = " ${@base_contains("DISTRO_FEATURES", "wayland", " \
+SRC_URI_append_r8a7790 = " ${@bb.utils.contains("DISTRO_FEATURES", "wayland", " \
         file://EGL_headers_for_wayland.patch \
         file://change-shell.patch \
         ", "", d)}"
 
 SRC_URI_r8a7791 = "file://r8a7791_linux_sgx_binaries_gles2.tar.bz2"
-SRC_URI_append_r8a7791 = " ${@base_contains("DISTRO_FEATURES", "wayland", " \
+SRC_URI_append_r8a7791 = " ${@bb.utils.contains("DISTRO_FEATURES", "wayland", " \
         file://EGL_headers_for_wayland.patch \
         ", "", d)}"
 
 SRC_URI_r8a7793 = "file://r8a7791_linux_sgx_binaries_gles2.tar.bz2"
-SRC_URI_append_r8a7793 = " ${@base_contains("DISTRO_FEATURES", "wayland", " \
+SRC_URI_append_r8a7793 = " ${@bb.utils.contains("DISTRO_FEATURES", "wayland", " \
         file://EGL_headers_for_wayland.patch \
         ", "", d)}"
 
 SRC_URI_r8a7794 = "file://r8a7794_linux_sgx_binaries_gles2.tar.bz2"
-SRC_URI_append_r8a7794 = " ${@base_contains("DISTRO_FEATURES", "wayland", " \
+SRC_URI_append_r8a7794 = " ${@bb.utils.contains("DISTRO_FEATURES", "wayland", " \
         file://EGL_headers_for_wayland.patch \
         ", "", d)}"
 
@@ -100,7 +100,7 @@ FILES_${PN}-dev = " \
 "
 
 PROVIDES = "virtual/libgles2"
-PROVIDES_append = "${@base_contains("DISTRO_FEATURES", "wayland", "", " virtual/egl", d)}"
+PROVIDES_append = "${@bb.utils.contains("DISTRO_FEATURES", "wayland", "", " virtual/egl", d)}"
 RPROVIDES_${PN} += "${GLES}-user-module libgles2-mesa libgles2-mesa-dev libgles2 libgles2-dev"
 INSANE_SKIP_${PN} += "ldflags already-stripped"
 INSANE_SKIP_${PN}-dev += "ldflags"
