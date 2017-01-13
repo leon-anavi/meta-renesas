@@ -44,9 +44,9 @@ II/ Build with or without GLES
 			   PREFERRED_PROVIDER_virtual/libgles2 = "gles-user-module"
 			   PREFERRED_PROVIDER_virtual/egl = "libegl"
 			   PREFERRED_PROVIDER_virtual/libgl = ""
-			   PREFERRED_PROVIDER_virtual/mesa = ""
+			   PREFERRED_PROVIDER_virtual/mesa = "mesa"
 			   PREFERRED_PROVIDER_libgbm = "libgbm"
-			   PREFERRED_PROVIDER_libgbm-dev = "libgbm"
+			   PREFERRED_RPROVIDER_libgbm-dev = "libgbm"
 
 			 NOTE: The r8a7790 uses rgx, r8a7791, r8a7793 and r8a7794 uses sgx.
 				   If you want to use rgx, please set to 'rgx' instead of 'sgx'.
