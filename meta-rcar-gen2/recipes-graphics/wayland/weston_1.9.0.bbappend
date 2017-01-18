@@ -7,5 +7,6 @@ SRC_URI_append = " \
  	       file://0001-Add-virtual-output-support.patch \
     	       file://0002-Get-DMA-fd-on-bo.patch \
 	       file://0003-Add-gst-recorder-for-h264-output-streaming.patch \
+	       file://0004-Fix-GST-error-complainings.patch \
                file://weston.service \
 "
