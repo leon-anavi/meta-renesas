@@ -20,10 +20,8 @@ function copy_mm_packages() {
         if [ ! -d binary-tmp ]; then
                 if [ -f $DOWNLOAD_DIR/$ZIP_1 -a -f $DOWNLOAD_DIR/$ZIP_2 ]; then
                         mkdir binary-tmp
-                        cd binary-tmp
-                        unzip -o $DOWNLOAD_DIR/$ZIP_1
-                        unzip -o $DOWNLOAD_DIR/$ZIP_2
-                        cd ..
+                        unzip -o $DOWNLOAD_DIR/$ZIP_1 -d binary-tmp
+                        unzip -o $DOWNLOAD_DIR/$ZIP_2 -d binary-tmp
                 else
                         echo -e
                         echo -e "ERROR: Missing Renesas proprietary software packages for Porter board."
