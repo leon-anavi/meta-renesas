@@ -27,10 +27,10 @@ function copy_mm_packages() {
                         echo -e "ERROR: Missing Renesas proprietary software packages for Porter board."
                         echo -e
                         echo -e "  The graphics and multimedia acceleration packages for "
-                        echo -e "  the R-Car M2 Porter board can be download from :"
+                        echo -e "  the R-Car M2 Porter board can be downloaded from :"
                         echo -e "    <http://www.renesas.com/secret/r_car_download/rcar_demoboard.jsp>"
                         echo -e
-                        echo -e "  These 2 files from there should be store in"
+                        echo -e "  These 2 files from there should be stored in your"
                         echo -e "  '$DOWNLOAD_DIR' directory."
                         echo -e "    $ZIP_1"
                         echo -e "    $ZIP_2"
