@@ -14,15 +14,15 @@ do_compile() {
 
 do_install() {
     # Copy kernel test program
-    mkdir -p ${D}/usr/local/bin/
-    cp ${S}/mmbuftp ${D}/usr/local/bin/
+    mkdir -p ${D}${RENESAS_DATADIR}/bin/
+    cp ${S}/mmbuftp ${D}${RENESAS_DATADIR}/bin/
 }
 
 PACKAGES = "\
     ${PN} \
 "
 FILES_${PN} = " \
-    /usr/local/bin/mmbuftp \
+    ${RENESAS_DATADIR}/bin/mmbuftp \
 "
 
 RPROVIDES_${PN} += "mmngrbuf-tp-user-module"

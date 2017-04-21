@@ -12,17 +12,17 @@ do_compile() {
 
 do_install() {
     # Create destination folder
-    mkdir -p ${D}/usr/local/bin/
+    mkdir -p ${D}${RENESAS_DATADIR}/bin/
 
     # Copy user test program
-    cp ${S}/vspm/vspm_tp ${D}/usr/local/bin/
+    cp ${S}/vspm/vspm_tp ${D}${RENESAS_DATADIR}/bin/
 }
 
 PACKAGES = "\
     ${PN} \
 "
 FILES_${PN} = " \
-    /usr/local/bin/vspm_tp \
+    ${RENESAS_DATADIR}/bin/vspm_tp \
 "
 
 RPROVIDES_${PN} += "vspm-tp-user-module"

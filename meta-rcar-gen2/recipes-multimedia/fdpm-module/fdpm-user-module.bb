@@ -19,11 +19,11 @@ do_compile() {
 
 do_install() {
     # Create destination folder
-    mkdir -p ${D}/usr/local/lib/ ${D}/usr/local/include/
+    mkdir -p ${D}${RENESAS_DATADIR}/lib/ ${D}${RENESAS_DATADIR}/include/
 
     # Copy shared library
-    cp -P ${S}/if/libfdpm.so* ${D}/usr/local/lib
-    cp -rf ${S}/include/*h ${D}/usr/local/include/
+    cp -P ${S}/if/libfdpm.so* ${D}${RENESAS_DATADIR}/lib
+    cp -rf ${S}/include/*h ${D}${RENESAS_DATADIR}/include/
 }
 
 # Append function to clean extract source
@@ -48,12 +48,12 @@ PACKAGES = "\
 "
 
 FILES_${PN} = " \
-    /usr/local/lib/libfdpm.so.* \
+    ${RENESAS_DATADIR}/lib/libfdpm.so.* \
 "
 
 FILES_${PN}-dev = " \
-    /usr/local/lib/libfdpm.so \
-    /usr/local/include/*.h \
+    ${RENESAS_DATADIR}/lib/libfdpm.so \
+    ${RENESAS_DATADIR}/include/*.h \
 "
 
 RPROVIDES_${PN} += "fdpm-user-module"

@@ -28,7 +28,7 @@ diff -ru DirectFB-1.6.0//systems/fbdev/Makefile.am ../DirectFB-1.6.0//systems/fb
  	-I$(top_srcdir)/lib		\
 -	-I$(top_srcdir)/src
 +	-I$(top_srcdir)/src		\
-+	-I/usr/local/include
++	-I@RENESAS_DATADIR@/include
  
  AM_CPPFLAGS = -D_XOPEN_SOURCE=500
  
@@ -38,7 +38,7 @@ diff -ru DirectFB-1.6.0//systems/fbdev/Makefile.am ../DirectFB-1.6.0//systems/fb
  	-avoid-version	\
 -	-module
 +	-module \
-+	-L/usr/local/lib
++	-L@RENESAS_DATADIR@/lib
  
  libdirectfb_fbdev_la_SOURCES = \
  	agp.c			\

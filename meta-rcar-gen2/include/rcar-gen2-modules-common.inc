@@ -6,4 +6,6 @@ export KERNELDIR = "${STAGING_KERNEL_DIR}"
 export LDFLAGS = ""
 export CP = "cp"
 
+require include/rcar-gen2-path-common.inc
+
 inherit module

@@ -5,6 +5,8 @@ PN = "gles-test-module"
 PR = "r0"
 OPENGLES3 ?= "0"
 
+require include/rcar-gen2-path-common.inc
+
 COMPATIBLE_MACHINE = "(r8a7790|r8a7791|r8a7793|r8a7794)"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -22,15 +24,15 @@ do_compile() {
 
 do_install() {
 	# Copy binary into sysroot
-	mkdir -p ${D}/usr/local/bin/
+	mkdir -p ${D}${RENESAS_DATADIR}/bin/
 	if [ "X${OPENGLES3}" = "X0" ]; then
-		cp ${S}/OES2_Texture ${D}/usr/local/bin/
-		cp ${S}/FragShaderSample.fsh ${D}/usr/local/bin/
-		cp ${S}/VertShaderSample.vsh ${D}/usr/local/bin/
+		cp ${S}/OES2_Texture ${D}${RENESAS_DATADIR}/bin/
+		cp ${S}/FragShaderSample.fsh ${D}${RENESAS_DATADIR}/bin/
+		cp ${S}/VertShaderSample.vsh ${D}${RENESAS_DATADIR}/bin/
 	else
-		cp ${S}/OES3_Texture ${D}/usr/local/bin/
-		cp ${S}/OES3_FragShaderSample.fsh ${D}/usr/local/bin/
-		cp ${S}/OES3_VertShaderSample.vsh ${D}/usr/local/bin/
+		cp ${S}/OES3_Texture ${D}${RENESAS_DATADIR}/bin/
+		cp ${S}/OES3_FragShaderSample.fsh ${D}${RENESAS_DATADIR}/bin/
+		cp ${S}/OES3_VertShaderSample.vsh ${D}${RENESAS_DATADIR}/bin/
 	fi
 }
 
@@ -38,7 +40,7 @@ PACKAGES = "\
   ${PN} \
   "
 FILES_${PN} = " \
-  /usr/local/bin/* \
+  ${RENESAS_DATADIR}/bin/* \
 "
 RPROVIDES_${PN} += "gles-test-module"
 INSANE_SKIP_${PN} += "ldflags"

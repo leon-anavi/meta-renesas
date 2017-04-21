@@ -1,4 +1,5 @@
 require ../../include/gles-control.inc
+require include/rcar-gen2-path-common.inc
 
 SRC_URI_rcar-gen2 = "git://github.com/renesas-devel/gst-omx.git;protocol=git;branch=RCAR-GEN2/1.0.0"
 SRCREV_rcar-gen2 = "${@'e0a23fb50ec211a8058eac223847bbcc574fb343' \
@@ -24,7 +25,7 @@ EXTRA_OECONF_append_rcar-gen2 = " \
 # Overwrite do_install[postfuncs] += " set_omx_core_name "
 # because it will force the plugin to use bellagio instead of our config
 revert_omx_core_name() {
-    sed -i -e "s;^core-name=.*;core-name=/usr/local/lib/libomxr_core.so;" "${D}/etc/xdg/gstomx.conf"
+    sed -i -e "s;^core-name=.*;core-name=${RENESAS_DATADIR}/lib/libomxr_core.so;" "${D}/etc/xdg/gstomx.conf"
 }
 
 REVERT_OMX_CORE_NAME = ""

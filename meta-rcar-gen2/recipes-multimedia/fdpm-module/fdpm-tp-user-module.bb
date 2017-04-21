@@ -13,10 +13,10 @@ do_compile() {
 
 do_install() {
     # Create destination folder
-    mkdir -p ${D}/usr/local/bin/
+    mkdir -p ${D}${RENESAS_DATADIR}/bin/
 
     # Copy user test program
-    cp ${S}/fdpm/fdpm_tp ${D}/usr/local/bin/
+    cp ${S}/fdpm/fdpm_tp ${D}${RENESAS_DATADIR}/bin/
 }
 
 PACKAGES = "\
@@ -24,7 +24,7 @@ PACKAGES = "\
 "
 
 FILES_${PN} = " \
-    /usr/local/bin/fdpm_tp \
+    ${RENESAS_DATADIR}/bin/fdpm_tp \
 "
 
 RPROVIDES_${PN} += "fdpm-tp-user-module"

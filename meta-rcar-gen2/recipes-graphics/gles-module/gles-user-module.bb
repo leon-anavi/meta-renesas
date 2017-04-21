@@ -1,4 +1,5 @@
 require ../../include/gles-control.inc
+require include/rcar-gen2-path-common.inc
 
 DESCRIPTION = "SGX/RGX user module"
 LICENSE = "CLOSED"
@@ -60,7 +61,12 @@ do_install() {
     # Copy binary into sysroot
     cp -r ${S}/etc ${D}
     cp -r ${S}/usr ${D}
-    mv ${D}/etc/init.d/rc.pvr ${D}/usr/local/bin/
+    mkdir -p ${D}${RENESAS_DATADIR}
+    mv ${D}/usr/local/* ${D}${RENESAS_DATADIR}
+    rm -fr ${D}/usr/local
+    mv ${D}/etc/init.d/rc.pvr ${D}${RENESAS_DATADIR}/bin/
+    sed -i "s,/usr/local,${RENESAS_DATADIR},g" \
+           ${D}${RENESAS_DATADIR}/bin/rc.pvr
     
     # Create a symbolic link for compatibility with various software
     ln -s libGLESv2.so ${D}/usr/lib/libGLESv2.so.2
@@ -68,6 +74,7 @@ do_install() {
     if [ "${USE_WAYLAND}" = "1" ]; then
         # Rename libEGL.so
         mv ${D}/usr/lib/libEGL.so ${D}/usr/lib/libEGL-pvr.so
+         
 
         # Set the "WindowSystem" parameter for wayland
         if [ "${GLES}" = "rgx" ]; then
@@ -81,6 +88,8 @@ do_install() {
     # Install systemd unit files
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 644 -p -D ${WORKDIR}/rc.pvr.service ${D}${systemd_system_unitdir}/rc.pvr.service
+        sed -i "s,@RENESAS_DATADIR@,${RENESAS_DATADIR},g" \
+               ${D}${systemd_system_unitdir}/rc.pvr.service
     fi
 } 
 
@@ -92,7 +101,7 @@ PACKAGES = "\
 FILES_${PN} = " \
     ${sysconfdir}/* \
     ${libdir}/* \
-    /usr/local/bin/* \
+    ${RENESAS_DATADIR}/bin/* \
 "
 
 FILES_${PN}-dev = " \

@@ -19,13 +19,13 @@ do_compile() {
 
 do_install() {
     # Create destination folder
-    mkdir -p ${D}/usr/local/lib/ ${D}/usr/local/include
+    mkdir -p ${D}${RENESAS_DATADIR}/lib/ ${D}${RENESAS_DATADIR}/include
     # Copy shared library
-    cp -P ${S}/vspm/if/libvspm.so* ${D}/usr/local/lib/
+    cp -P ${S}/vspm/if/libvspm.so* ${D}${RENESAS_DATADIR}/lib/
     # Copy shared header files
-    cp -f ${BUILDDIR}/include/vspm_public.h ${D}/usr/local/include
-    cp -f ${BUILDDIR}/include/vsp_drv.h ${D}/usr/local/include
-    cp -f ${BUILDDIR}/include/tddmac_drv.h ${D}/usr/local/include
+    cp -f ${BUILDDIR}/include/vspm_public.h ${D}${RENESAS_DATADIR}/include
+    cp -f ${BUILDDIR}/include/vsp_drv.h ${D}${RENESAS_DATADIR}/include
+    cp -f ${BUILDDIR}/include/tddmac_drv.h ${D}${RENESAS_DATADIR}/include
 }
 
 do_clean_source() {
@@ -41,15 +41,15 @@ PACKAGES = "\
 "
 
 FILES_${PN} = " \
-    /usr/local/lib/libvspm.so.* \
+    ${RENESAS_DATADIR}/lib/libvspm.so.* \
 "
 
 FILES_${PN}-dev = " \
-    /usr/local/lib \
-    /usr/local/lib/libvspm.so \
-    /usr/local/lib/* \
-    /usr/local/include \
-    /usr/local/include/*.h \
+    ${RENESAS_DATADIR}/lib \
+    ${RENESAS_DATADIR}/lib/libvspm.so \
+    ${RENESAS_DATADIR}/lib/* \
+    ${RENESAS_DATADIR}/include \
+    ${RENESAS_DATADIR}/include/*.h \
 "
 
 RPROVIDES_${PN} += "vspm-user-module"

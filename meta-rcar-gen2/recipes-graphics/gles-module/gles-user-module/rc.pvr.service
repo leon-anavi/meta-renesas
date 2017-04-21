@@ -1,6 +1,6 @@
 
 [Unit]
-SourcePath=/usr/local/bin/rc.pvr
+SourcePath=@RENESAS_DATADIR@/bin/rc.pvr
 Before=weston.service
 
 [Service]
@@ -11,8 +11,8 @@ IgnoreSIGPIPE=no
 KillMode=process
 GuessMainPID=no
 RemainAfterExit=yes
-ExecStart=/usr/local/bin/rc.pvr start
-ExecStop=/usr/local/bin/rc.pvr stop
+ExecStart=@RENESAS_DATADIR@/bin/rc.pvr start
+ExecStop=@RENESAS_DATADIR@/bin/rc.pvr stop
 
 [Install]
 RequiredBy=weston.service

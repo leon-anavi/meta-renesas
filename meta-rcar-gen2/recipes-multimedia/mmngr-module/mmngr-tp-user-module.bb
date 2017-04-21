@@ -14,15 +14,15 @@ do_compile() {
 
 do_install() {
     # Copy kernel test program
-    mkdir -p ${D}/usr/local/bin/
-    cp ${S}/mmtp ${D}/usr/local/bin/
+    mkdir -p ${D}${RENESAS_DATADIR}/bin/
+    cp ${S}/mmtp ${D}${RENESAS_DATADIR}/bin/
 }
 
 PACKAGES = "\
     ${PN} \
 "
 FILES_${PN} = " \
-    /usr/local/bin/mmtp \
+    ${RENESAS_DATADIR}/bin/mmtp \
 "
 
 RPROVIDES_${PN} += "mmngr-tp-user-module"

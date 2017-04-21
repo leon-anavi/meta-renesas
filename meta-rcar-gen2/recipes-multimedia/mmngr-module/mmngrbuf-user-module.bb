@@ -18,14 +18,14 @@ do_compile() {
 }
 
 do_install() {
-    mkdir -p ${D}/usr/local/lib/ ${D}/usr/local/include
+    mkdir -p ${D}${RENESAS_DATADIR}/lib/ ${D}${RENESAS_DATADIR}/include
 
     # Copy shared library
-    cp -P ${S}/if/libmmngrbuf.so* ${D}/usr/local/lib/
-    cd ${D}/usr/local/lib/
+    cp -P ${S}/if/libmmngrbuf.so* ${D}${RENESAS_DATADIR}/lib/
+    cd ${D}${RENESAS_DATADIR}/lib/
     # Copy shared header files
-    cp -f ${BUILDDIR}/include/mmngr_buf_user_public.h ${D}/usr/local/include
-    cp -f ${BUILDDIR}/include/mmngr_buf_user_private.h ${D}/usr/local/include
+    cp -f ${BUILDDIR}/include/mmngr_buf_user_public.h ${D}${RENESAS_DATADIR}/include
+    cp -f ${BUILDDIR}/include/mmngr_buf_user_private.h ${D}${RENESAS_DATADIR}/include
 }
 
 # Append function to clean extract source
@@ -45,14 +45,14 @@ PACKAGES = "\
 "
 
 FILES_${PN} = " \
-    /usr/local/lib/libmmngrbuf.so.* \
+    ${RENESAS_DATADIR}/lib/libmmngrbuf.so.* \
 "
 
 FILES_${PN}-dev = " \
-    /usr/local/include \
-    /usr/local/include/*.h \
-    /usr/local/lib \
-    /usr/local/lib/libmmngrbuf.so \
+    ${RENESAS_DATADIR}/include \
+    ${RENESAS_DATADIR}/include/*.h \
+    ${RENESAS_DATADIR}/lib \
+    ${RENESAS_DATADIR}/lib/libmmngrbuf.so \
 "
 
 RPROVIDES_${PN} += "mmngrbuf-user-module"

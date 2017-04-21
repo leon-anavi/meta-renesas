@@ -19,12 +19,12 @@ do_compile() {
 
 do_install() {
     # Create shared folder
-    mkdir -p ${D}/usr/local/lib/ ${D}/usr/local/include/
+    mkdir -p ${D}${RENESAS_DATADIR}/lib/ ${D}${RENESAS_DATADIR}/include/
     # Copy share library
-    cp -P ${S}/if/libs3ctl.so* ${D}/usr/local/lib/
+    cp -P ${S}/if/libs3ctl.so* ${D}${RENESAS_DATADIR}/lib/
     # Copy shared header files
-    cp -f ${BUILDDIR}/include/s3ctl_user_public.h ${D}/usr/local/include/
-    cp -f ${BUILDDIR}/include/s3ctl_user_private.h ${D}/usr/local/include/
+    cp -f ${BUILDDIR}/include/s3ctl_user_public.h ${D}${RENESAS_DATADIR}/include/
+    cp -f ${BUILDDIR}/include/s3ctl_user_private.h ${D}${RENESAS_DATADIR}/include/
 }
 
 # Append function to clean extract source
@@ -44,12 +44,12 @@ PACKAGES = "\
 "
 
 FILES_${PN} = " \
-    /usr/local/lib/libs3ctl.so.* \
+    ${RENESAS_DATADIR}/lib/libs3ctl.so.* \
 "
 
 FILES_${PN}-dev = " \
-    /usr/local/lib/libs3ctl.so \
-    /usr/local/include/*.h \
+    ${RENESAS_DATADIR}/lib/libs3ctl.so \
+    ${RENESAS_DATADIR}/include/*.h \
 "
 
 RPROVIDES_${PN} += "s3ctl-user-module"

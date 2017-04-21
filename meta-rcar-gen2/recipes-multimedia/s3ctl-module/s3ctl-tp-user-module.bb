@@ -13,9 +13,9 @@ do_compile() {
 
 do_install() {
     # Create shared folder
-    mkdir -p ${D}/usr/local/bin/
+    mkdir -p ${D}${RENESAS_DATADIR}/bin/
     # Copy user test program
-    cp ${S}/s3tp ${D}/usr/local/bin/
+    cp ${S}/s3tp ${D}${RENESAS_DATADIR}/bin/
 }
 
 PACKAGES = "\
@@ -25,7 +25,7 @@ PACKAGES = "\
 "
 
 FILES_${PN} = " \
-    /usr/local/bin/s3tp \
+    ${RENESAS_DATADIR}/bin/s3tp \
 "
 
 RPROVIDES_${PN} += "s3ctl-tp-user-module"
