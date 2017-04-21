@@ -8,7 +8,7 @@ COMPATIBLE_MACHINE = "porter"
 
 S = "${WORKDIR}"
 
-SRC_URI_append_sota = "file://uEnv-ota.txt"
+SRC_URI_append_sota = " file://uEnv-ota.txt"
 
 do_deploy() {
     install -d ${DEPLOYDIR}/${PN}
