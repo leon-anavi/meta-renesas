@@ -10,16 +10,19 @@ FILESEXTRAPATHS_prepend = "${THISDIR}/alsa-utils-config:"
 
 SRC_URI = "file://COPYING \
           "
-SRC_URI_append_porter  = "file://asound.state-porter"
-SRC_URI_append_koelsch = "file://asound.state-porter"
-# SRC_URI_append_silk  = "file://asound.state-silk"
+
+ASOUNDSTATEFILE_porter  = "asound.state-porter"
+ASOUNDSTATEFILE_koelsch = "asound.state-porter"
+#ASOUNDSTATEFILE_silk   = "asound.state-silk"
+
+SRC_URI_append  = " file://${ASOUNDSTATEFILE}"
 
 # package with no tarball
 S = "${WORKDIR}"
 
 do_install() {
        install -d ${D}/${localstatedir}/lib/alsa
-       install -m 0644 asound.state ${D}/${localstatedir}/lib/alsa
+       install -m 0644 ${ASOUNDSTATEFILE} ${D}/${localstatedir}/lib/alsa/asound.state
 }
 
 FILES_${PN} += "${localstatedir}"
