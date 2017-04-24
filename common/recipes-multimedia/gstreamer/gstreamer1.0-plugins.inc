@@ -80,6 +80,7 @@ autogennoconf() {
 }
 do_patch[prefuncs] += "autogennoconf"
 do_patch[depends] += "autoconf-native:do_populate_sysroot"
+do_patch[depends] += "gettext-native:do_populate_sysroot"
 
 do_install_prepend() {
         export GIR_EXTRA_LIBS_PATH="${B}/gst-libs/gst/tag/.libs:${B}/gst-libs/gst/video/.libs:${B}/gst-libs/gst/audio/.libs:${B}/gst-libs/gst/rtp/.libs:${B}/gst-libs/gst/sdp/.libs"
