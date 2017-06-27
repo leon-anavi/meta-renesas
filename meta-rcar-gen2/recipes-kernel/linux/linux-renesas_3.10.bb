@@ -163,6 +163,12 @@ SRC_URI_append_porter = " file://can-rcar.cfg"
 # Backport fix for CVE-2016-5195
 SRC_URI_append = " file://9999-Backport-fix-for-CVE-2016-5195.patch "
 
+# Backport fix for CVE-2017-1000364
+SRC_URI_append = " file://0001-SEC-Backport-mm-larger-stack-guard-gap-between-vmas.patch"
+SRC_URI_append = " file://0002-SEC-Backport-mm-fix-new-crash-in-unmapped_area_topdo.patch"
+SRC_URI_append = " file://0003-SEC-Backport-Allow-stack-to-grow-up-to-address-space.patch"
+
+
 S = "${WORKDIR}/git"
 
 KERNEL_DEFCONFIG = "shmobile_defconfig"
