@@ -44,7 +44,7 @@ UBOOT_SREC_SYMLINK ?= "u-boot-${MACHINE}.srec"
 UBOOT_SREC_IMAGE ?= "u-boot-${MACHINE}-${PV}-${PR}.srec"
 
 do_deploy_append() {
-	install ${WORKDIR}/build/${UBOOT_SREC} ${DEPLOYDIR}/${UBOOT_SREC_IMAGE}
+	install ${S}/${UBOOT_SREC} ${DEPLOYDIR}/${UBOOT_SREC_IMAGE}
 
 	cd ${DEPLOYDIR}
 	rm -f ${UBOOT_SREC} ${UBOOT_SREC_SYMLINK}
